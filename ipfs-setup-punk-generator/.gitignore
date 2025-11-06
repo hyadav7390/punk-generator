@@ -1,0 +1,6 @@
+# IPFS data and local env
+ipfs/data/
+ipfs/staging/
+.env
+*.log
+CIDs/

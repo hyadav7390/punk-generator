@@ -1,0 +1,18 @@
+# /etc/systemd/system/ipfs-compose.service
+# Manage the IPFS docker compose stack with systemd (optional).
+
+[Unit]
+Description=IPFS (Kubo) via Docker Compose
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/path/to/your/repo  # <-- set this to the punk-generator folder path
+ExecStart=/usr/bin/docker compose up -d
+ExecStop=/usr/bin/docker compose down
+RemainAfterExit=yes
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
